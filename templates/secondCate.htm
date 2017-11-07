@@ -1,0 +1,120 @@
+{% extends 'base.htm' %}
+{% block content %}
+<section class="Contain SubPage clearfix">
+    <div class="LeftBar">
+        <div class="CulumnName">
+            <h2>产品分类</h2>
+            <p>Product categories</p>
+        </div>
+        <div class="MenuList">
+            <ul>
+
+
+                {% for productMainCate in productMainCate_list %}
+                <li rel='38' {% ifequal productMainCate.id category_id %}class="onli" {% endifequal %}>
+                    <span><a href="/productMainCate/{{productMainCate.id}}">{{productMainCate.name}}</a></span>
+
+                    <dl class="sub">
+                        {% for productSecondCate in productSecondCate_list %}
+                        {% ifequal productSecondCate.productMainCate_id productMainCate.id %}
+                        <dd><a href="/productMainCate/{{productMainCate.id}}/{{productSecondCate.id}}" {% ifequal productSecondCate.id selectProductSecondCate.id %} class="cur" {% endifequal %}>{{productSecondCate.name}}</a>
+                        </dd>
+                        {% endifequal %}
+                        {% endfor %}
+
+                    </dl>
+
+                </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+    <!--/左侧 end-->
+
+    <div class="RightBar">
+        <div class="Current">
+            <h3>
+
+                <img src="{{MEDIA_URL}}/{{selectProductSecondCate.logo}}"
+                     tppabs="http://www.etsc-tech.com/uploadfiles/2017/08/201708031330313031.png" width="158"
+                     height="73">
+
+
+            </h3>
+            <div class="place">
+                您现在的位置：<a
+                    href="/">首页</a>-
+                <a href="/productMainCate/{{selectProductMainCate.id}}">产品分类</a>- <a
+                    href="/productMainCate/{{selectProductMainCate.id}}/{{selectProductSecondCate.id}}">{{selectProductMainCate.name}}</a>- <span>{{selectProductSecondCate.name}}</span>
+            </div>
+        </div>
+
+        <div class="ProList">
+            <ul>
+                {% for product in product_list.object_list %}
+                <li>
+                    <div class="img Scale-img"><a
+                            href="/productMainCate/{{selectProductMainCate.id}}/{{selectProductSecondCate.id}}/{{product.id}}"><img
+                            src="{{MEDIA_URL}}/{{product.image}}"></a></div>
+                    <div class="tit"><a
+                            href="/productMainCate/{{selectProductMainCate.id}}/{{selectProductSecondCate.id}}/{{product.id}}">{{product.title}}</a></div>
+                    <p>{{product.describe}}</p>
+                    <p>
+                        <a href="/productMainCate/{{selectProductMainCate.id}}/{{selectProductSecondCate.id}}/{{product.id}}" class="detail">查看详情</a></p>
+                </li>
+                {% endfor %}
+
+
+            </ul>
+        </div>
+
+        <!--Pages-->
+        <div class='Pages'>
+                <span class='p_page'>
+                    
+                        <!--<a href='javascript:void(0);' class='a_first'>首页</a>-->
+                        {% if product_list.has_previous %}
+                        <a href="?{{ product_list.previous_page_number.querystring }}" class='a_prev'>上一页</a>
+                        <em class="num">
+                            {% endif %}
+                            {% for page in product_list.pages %}
+                            {% if page %}
+                            {% ifequal page product_list.number %}
+                            <a href="?{{ page.querystring }}" class='a_cur'>{{page}}</a>
+                            {% else %}
+                            <a href="?{{ page.querystring }}" class='a_num'>{{page}}</a>
+                            {% endifequal %}
+                            {% else %}
+                            <a class='a_num'>...</a>
+                            {% endif %}
+                            {% endfor %}
+
+                            <!--<a href="" class='a_num'>4</a>-->
+                        </em>
+                        {% if product_list.has_next %}
+                        <a href="?{{ product_list.next_page_number.querystring }}" class='a_next'>下一页</a>
+                        {% endif %}
+                        <!--<a href="" class='a_end'>尾页</a>-->
+                    <script type='text/javascript'> function redirectPage_(inputID) {
+                        var inputValue = document.getElementById(inputID).value;
+                        if (!(/^\d+$/).test(inputValue)) {
+                            document.getElementById(inputID).value = '1';
+                            return;
+                        }
+                        if (inputValue <= 0) {
+                            inputValue = 1;
+                        }
+                        if (inputValue > 4) {
+                            inputValue = 4;
+                        }
+                        location.href = 'http://www.etsc-tech.com/cn/products/list_245.aspx?page={$wtl_pager}'.replace('{$wtl_pager}', inputValue);
+                    } </script>
+                </span>
+        </div>
+        <!--Pages-->
+
+    </div>
+    <!--/右侧 end-->
+</section>
+{% endblock %}
