@@ -17,7 +17,7 @@
                                         </dl>
                                     </div>
                                     <p class="tit">{{productMainCate.name}}</p>
-                                    <div class="img"><img src="{{MEDIA_URL}}/{{productMainCate.image}}" ></div>
+                                    <div class="img"><img src="{{MEDIA_URL}}{{productMainCate.image}}" ></div>
                                 </a>
                             </dd>
                         </dl>
@@ -64,16 +64,16 @@
         <h2 class="HomeTit"><a href="/static/Applications/list_27.aspx.htm"  class="more">更多</a>应用领域</h2>
         <div class="HomeArea">
             <ul>
-                {% for applicationCate in applicationCate_list %}
+                {% for application in application_list %}
                     <li>
-                        <a href="/applicationCate/{{applicationCate.id}}" >
+                        <a href="/application/{{application.id}}" >
                             <div class="infotxt">
                                 <dl class="box">
-                                    <dd>{{applicationCate.describe}}</dd>
+                                    <dd>{{application.describe}}</dd>
                                 </dl>
                             </div>
-                            <div class="img"><img src="{{MEDIA_URL}}/{{applicationCate.image}}" ></div>
-                            <div class="tit">{{applicationCate.name}}</div>
+                            <div class="img"><img src="{{MEDIA_URL}}{{application.image}}" ></div>
+                            <div class="tit">{{application.name}}</div>
                         </a>
                     </li>
                 {% endfor %}
@@ -90,13 +90,13 @@
     </section>
     <section class="HomeBrand">
         <div class="Contain">
-            <h2 class="HomeTit"><a href="static/Partners/index_14.aspx.htm"  class="more">更多</a>代理品牌</h2>
+            <h2 class="HomeTit"><a href="/brands"  class="more">更多</a>代理品牌</h2>
             <div class="scroll">
                 <ul>
                     {% for brand in brand_list %}
                         <li>
                             <a  target="_blank" href="{{brand.url}}" >
-                                <div class="Scale-img"><img src="{{MEDIA_URL}}/{{brand.logo}}"  alt=""></div>
+                                <div class="Scale-img"><img src="{{MEDIA_URL}}{{brand.logo}}"  alt=""></div>
                             </a>
                         </li>
                     {% endfor %}

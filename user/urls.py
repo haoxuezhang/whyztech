@@ -14,6 +14,7 @@ urlpatterns = [
     # url(r'^news/(?P<category_id>[a-z]+)/$', views.newsList, name='news_list'),
     # url(r'^examples/$', views.exampleList, name='example_list'),
     url(r'^application/(?P<application_id>[a-z]+)$', views.ApplicationDetail.as_view(), name='application_detail'),
-    url(r'^news/$', views.NewsList, name='news_list')
-    # url(r'^aboutus/$', views.AboutUs, name='aboutus'),
+    url(r'^news/$', views.NewsList, name='news_list'),
+    url(r'^aboutus/$', views.Aboutus, name='aboutus'),
+    url(r'^brands/$', views.BrandsList, name='brands_list'),
 ]

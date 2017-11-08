@@ -1,169 +1,44 @@
 {% extends 'base.htm' %}
 {% block content %}
-<section class="Contain SubPage clearfix">
-  <div class="LeftBar">
-    <div class="CulumnName">
-      <h2>应用领域</h2>
-      <p>Product categories</p>
-    </div>
-    <div class="MenuList">
-      <ul>
-          
+    <section class="Contain SubPage clearfix">
+        <div class="LeftBar">
+            <div class="CulumnName">
+                <h2>应用领域</h2>
+                <p>ABOUT US</p>
+            </div>
+            <div class="MenuList">
+                <ul>
+                    {% for application in application_list %}
+                        <li rel='{{application.name}}' {% ifequal application.id selectedApplication.id %}class="onli"{% endifequal %}><span><a href="/application/{{ application.id }}">{{application.name}}</a></span></li>
+                    {% endfor %}
 
+                        <!-- <li rel='26'><span><a href="index_26.aspx.htm">服务创造未来</a></span></li> -->
 
-              <li rel='38'>
-                  <span><a href="list_38-1.aspx.htm" tppabs="http://www.etsc-tech.com/cn/Products/list_38.aspx">激光器</a></span>
+                </ul>
+            </div>
+        </div>
+        <!--/左侧 end-->
 
-                  <dl class="sub">
-                      
-                          <dd><a href="list_285.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_285.aspx" rel='285'>光纤激光器</a></dd>
-                      
-                          <dd><a href="list_155.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_155.aspx" rel='155'>固体激光器</a></dd>
-                      
-                          <dd><a href="list_53.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_53.aspx" rel='53'>半导体激光器</a></dd>
-                      
-                          <dd><a href="list_161.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_161.aspx" rel='161'>气体激光器</a></dd>
-                      
-                  </dl>
-
-              </li>
-          
-
-
-              <li rel='39'>
-                  <span><a href="list_39.aspx.htm" tppabs="http://www.etsc-tech.com/cn/Products/list_39.aspx">单光子计数</a></span>
-
-                  <dl class="sub">
-                      
-                          <dd><a href="list_245.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_245.aspx" rel='245'>PicoQuant</a></dd>
-                      
-                          <dd><a href="list_171.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_171.aspx" rel='171'>MPD</a></dd>
-                      
-                          <dd><a href="list_271.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_271.aspx" rel='271'>Quantum Opus</a></dd>
-                      
-                          <dd><a href="list_311.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_311.aspx" rel='311'>Photon Force</a></dd>
-                      
-                  </dl>
-
-              </li>
-          
-
-
-              <li rel='223'>
-                  <span><a href="list_223.aspx.htm" tppabs="http://www.etsc-tech.com/cn/Products/list_223.aspx">功率测量</a></span>
-
-                  <dl class="sub">
-                      
-                          <dd><a href="list_238.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_238.aspx" rel='238'>Coherent</a></dd>
-                      
-                          <dd><a href="list_229.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_229.aspx" rel='229'>Primes</a></dd>
-                      
-                          <dd><a href="list_307.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_307.aspx" rel='307'>PD/APD</a></dd>
-                      
-                  </dl>
-
-              </li>
-          
-
-
-              <li rel='43'>
-                  <span><a href="list_43.aspx.htm" tppabs="http://www.etsc-tech.com/cn/Products/list_43.aspx">显微及光谱仪器</a></span>
-
-                  <dl class="sub">
-                      
-                          <dd><a href="list_287.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_287.aspx" rel='287'>PicoQuant</a></dd>
-                      
-                          <dd><a href="list_165.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_165.aspx" rel='165'>Wasatch Photonics</a></dd>
-                      
-                          <dd><a href="list_293.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_293.aspx" rel='293'>Chroma</a></dd>
-                      
-                  </dl>
-
-              </li>
-          
-
-
-              <li rel='46'>
-                  <span><a href="list_46.aspx.htm" tppabs="http://www.etsc-tech.com/cn/Products/list_46.aspx">光机组件</a></span>
-
-                  <dl class="sub">
-                      
-                          <dd><a href="list_167.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_167.aspx" rel='167'>Sigma Koki</a></dd>
-                      
-                          <dd><a href="list_177.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_177.aspx" rel='177'>Elliot Scientific</a></dd>
-                      
-                          <dd><a href="list_187.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_187.aspx" rel='187'>Siskiyou</a></dd>
-                      
-                  </dl>
-
-              </li>
-          
-
-
-              <li rel='219'>
-                  <span><a href="list_219.aspx.htm" tppabs="http://www.etsc-tech.com/cn/Products/list_219.aspx">测控设备</a></span>
-
-                  <dl class="sub">
-                      
-                          <dd><a href="list_261.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_261.aspx" rel='261'>LUNA</a></dd>
-                      
-                          <dd><a href="list_221.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_221.aspx" rel='221'>Semicon</a></dd>
-                      
-                  </dl>
-
-              </li>
-          
-
-
-              <li rel='263'>
-                  <span><a href="list_263.aspx.htm" tppabs="http://www.etsc-tech.com/cn/Products/list_263.aspx">太赫兹THz</a></span>
-
-                  <dl class="sub">
-                      
-                          <dd><a href="list_275.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_275.aspx" rel='275'>NEL</a></dd>
-                      
-                          <dd><a href="list_277.aspx.htm" tppabs="http://www.etsc-tech.com/cn/products/list_277.aspx" rel='277'>Terasense</a></dd>
-                      
-                  </dl>
-
-              </li>
-          
-      </ul>
-    </div>
-  </div>
-  <!--/左侧 end-->
-    <div class="RightBar">
+        <div class="RightBar">
             <div class="Current">
-                <h3>{{applicaton.name}}</h3>
+                <h3>
+                    {{ selectedApplication.name }}
+                </h3>
                 <div class="place">
-                    您现在的位置：<a href="/" tppabs="http://www.etsc-tech.com/index.aspx">首页</a>- <a href="list_38.aspx.htm" >产品分类</a>- <a href="list_38-2.aspx.htm" >激光器</a>- <span>光纤激光器</span>
+                    您现在的位置：<a href="/">首页</a>- <a href="/application/{{ selectedApplication.id }}">应用领域</a>- <span>{{ selectedApplication.name }}</span>
                 </div>
             </div>
 
-            <div class="Bigimg"><img src="{{MEDIA_URL}}/{{application.image}}" ></div>
-            <div class="inforight">
-                <h4 class="tit">{{application.name}}</h4>
-                <p>{{application.describe}}</p>
-            </div>
-            <div class="clear"></div>
-
-         
-           
-           <div class="titsubs"><span>详细介绍</span></div>
             <article class="SinglePage">
                 <!--content s-->
-                {{application.context|safe}}
-                  <!--<ul>	<li>		<span style="line-height:1.5;">脉冲宽度小家居安静安静啊家居安静安静啊假按揭啊就安静安静安静安静安静安静安静啊就安静安静安静安静安静安静啊于800 fs</span> 	</li>	<li>		<span style="line-height:1.5;">100 kHz至1 MHz的可调重复频率</span> 	</li>	<li>		<span style="line-height:1.5;">良好的光束质量M2 &lt;1.3</span> 	</li>	<li>		<span style="line-height:1.5;">峰值功率高达200兆瓦</span> 	</li>	<li>		<span style="line-height:1.5;">快速预热</span> 	</li>	<li>		<span style="line-height:1.5;">不停机情况下变换频率</span> 	</li></ul><p>	<br /></p>-->
+                <p>{{selectedApplication.context|safe}}</p>
+                <!-- <p>	&nbsp;<img alt="" src="whdlkj/s/tatic/uploadfiles/2017/07/201707280929532953.jpg" tppabs="http://www.etsc-tech.com/whdlkj/s/tatic/uploadfiles/2017/07/201707280929532953.jpg" /></p><br /><p style="text-indent:2em;">	<b style="font-size:16px;color:#9665d5;"><span style="font-family:'Microsoft YaHei';color:#9933E5;"><span style="font-family:'Microsoft YaHei';color:#9933E5;"><b style="text-indent:24px;white-space:normal;font-size:16px;color:#9665D5;"><span style="font-family:'Microsoft YaHei';color:#9933E5;">武汉</span></b>东</span></span><span style="font-family:'Microsoft YaHei';color:#9933E5;">隆科技有限公司</span></b><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;">（以下简称“东隆科技”）创立于1997年，坐落于著名的武汉·中国光谷的核心区。</span></p><p style="text-indent:2em;">	<span style="text-indent:21pt;line-height:1.5;color:#666666;font-family:'Microsoft YaHei';">&nbsp;</span></p><p class="MsoNormal" style="text-indent:21pt;">	<span style="font-family:'Microsoft YaHei';color:#666666;font-size:14px;">东隆科技主要合作厂商包括：</span><span style="font-family:'Microsoft YaHei';color:#666666;font-size:14px;"><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">德国</span></span><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">PicoQuant</span><span style="font-family:'Microsoft YaHei';color:#666666;font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">、</span><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">Primes，</span><span style="font-family:'Microsoft YaHei';color:#666666;font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">法国</span><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">Thales，</span><span style="font-family:'Microsoft YaHei';color:#666666;font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">美国</span><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">Coherent</span><span style="font-family:'Microsoft YaHei';color:#666666;font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">、Quantum Opus、Wasatch Photonics、</span><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">IPG，</span><span style="font-family:'Microsoft YaHei';color:#666666;font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">日本</span><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">NEL</span><span style="font-family:'Microsoft YaHei';color:#666666;font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">、</span><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">QD Laser</span><span style="font-family:'Microsoft YaHei';color:#666666;font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">、</span><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-image:none;background-attachment:scroll;background-position:0% 0%;background-repeat:repeat;">SIGMA KOKI&nbsp;</span><span style="font-family:'Microsoft YaHei';color:#666666;font-size:14px;">等多家国际一流厂商。产品涵</span><span style="font-family:'Microsoft YaHei';color:#666666;font-size:14px;">盖教学、科研及工</span><span style="font-family:'Microsoft YaHei';color:#666666;font-size:14px;">业应用的各个环节，主要涉及光纤通讯和传感、激光微加工、光谱及成像、量子光学、超快超强激光系统五大光学应用领域。</span><span></span></p><p class="MsoNormal" style="text-indent:21pt;">	<span></span></p><p style="text-indent:2em;">	<span style="font-size:10.5pt;font-family:宋体;"></span><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;">&nbsp;</span></p><p style="text-indent:2em;">	<span style="font-size:14px;font-family:'Microsoft YaHei';color:#666666;">东隆科技一贯秉持“服务创造未来”的宗旨，为我们的客户提供迅捷的高品质服务，倍受广大客户信赖。我们同各个厂商建立了全面深入的合作关系，并联合成立技术服务中心。经过近二十年的发展，我们拥有一批专业的技术人才，能够针对客户需求提供高品质的产品及专业的解决方案，争取以最经济、最有效的方式满足客户的应用需求。</span></p> -->
+
                 <!--content end-->
                 <div class="clear"></div>
             </article>
-            
-           
-
-
 
         </div>
-    
-  <!--/右侧 end--> 
-</section>
+        <!--/右侧 end-->
+    </section>
 {% endblock %}

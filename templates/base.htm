@@ -7,9 +7,9 @@
 <!--
                        (0 0)
    +=============oOO====(_)================+
-   |   Powered By wanhu - www.wanhu.com.cn |
-   |   Tel:400-888-0035  020-85575672      |
-   |   Creation:2015.06.27                 |
+   |   Powered By hejiahao - www.hjhgo.cn |
+   |   hust——好学长      |
+   |   Creation:2017.11.10                 |
    |   ezEip v4.1.0                        |
    +==========================oOO==========+
                       |__|__|
@@ -20,7 +20,7 @@
 <meta name="Author" content="万户网络">
 <meta content="万户网络 www.wanhu.com.cn" name="design">
 <meta name="Author" content="万户网络设计制作" />
-<title>武汉东隆科技有限公司</title>
+<title>华中科技大学能源学院</title>
 <meta name="keywords" content="武汉东隆科技有限公司" />
 <meta name="Description" content="武汉东隆科技有限公司" />
 
@@ -95,7 +95,7 @@
             <div class="toper">
                 <div class="search">
                     <input type="text" name="textfield" id="key" onkeydown="getKey(event);" class="input">
-                    <input type="image" name="imageField" id="imageField"  src="/static/images/searchbtn.png" >
+                    <input type="image" name="imageField" id="imageField" >
                 </div>
 
  
@@ -106,7 +106,7 @@
                     <li id="nav1"><span><a href="/" >首 页</a></span></li>
                     
                         <li id="nav12">
-                            <span><a href="/static/products/list_38.aspx.htm" >产品分类</a></span>
+                            <span><a >产品分类</a></span>
                             <div class="SubNav">
                                 <dl>
                                     {% for productMainCate in productMainCate_list %}
@@ -117,11 +117,11 @@
                         </li>
                     
                         <li id="nav13">
-                            <span><a href="/static/Applications/list_27.aspx.htm" >应用领域</a></span>
+                            <span><a >应用领域</a></span>
                             <div class="SubNav">
                                 <dl>
-                                    {% for applicationCate in applicationCate_list %}
-                                        <dd><a href="/Applications/{{applicationCate.id}}" >{{applicationCate.name}}</a></dd>
+                                    {% for application in application_list %}
+                                        <dd><a href="/application/{{application.id}}" >{{application.name}}</a></dd>
                                     {% endfor %}
 
 
@@ -144,9 +144,9 @@
                             <div class="SubNav">
                                 <dl>
                                     
-                                        <dd><a href="" >公司简介</a></dd>
+                                        <!-- <dd><a href="" >公司简介</a></dd>
                                     
-                                        <dd><a href="" >服务创造未来</a></dd>
+                                        <dd><a href="" >服务创造未来</a></dd> -->
                                     
 
                                 </dl>
@@ -189,16 +189,16 @@
 <aside class="HomeBan">
     <div class="bd">
         <ul>
+            {% for important in important_list %}
+                <li><a href="/news/{{important.id}}" ><img src="{{MEDIA_URL}}{{important.picture}}"/></a></li>
+            {% endfor %}
+                <!-- <li><a href="static/Products/list_285.aspx-CategoryID=95.htm" ><img src="/static/uploadfiles/2017/09/201709261355145514.jpg"  /></a></li> -->
             
-                <li><a href="static/news/info_19.aspx-itemid=4.htm" ><img src="/static/uploadfiles/2017/06/201706091513371337.jpg"  /></a></li>
+                <!-- <li><a href="static/news/info_21.aspx-itemid=861.htm" ><img src="/static/uploadfiles/2017/08/201708301233533353.jpg"  /></a></li> -->
             
-                <li><a href="static/Products/list_285.aspx-CategoryID=95.htm" ><img src="/static/uploadfiles/2017/09/201709261355145514.jpg"  /></a></li>
+                <!-- <li><a href="static/news/info_19.aspx-itemid=498.htm" ><img src="/static/uploadfiles/2017/07/20170728131708178.jpg"  /></a></li> -->
             
-                <li><a href="static/news/info_21.aspx-itemid=861.htm" ><img src="/static/uploadfiles/2017/08/201708301233533353.jpg"  /></a></li>
-            
-                <li><a href="static/news/info_19.aspx-itemid=498.htm" ><img src="/static/uploadfiles/2017/07/20170728131708178.jpg"  /></a></li>
-            
-                <li><a href="static/news/info_19.aspx-itemid=864.htm" ><img src="/static/uploadfiles/2017/09/201709261359385938.jpg"  /></a></li>
+                <!-- <li><a href="static/news/info_19.aspx-itemid=864.htm" ><img src="/static/uploadfiles/2017/09/201709261359385938.jpg"  /></a></li> -->
             
         </ul>
     </div>
@@ -211,26 +211,26 @@
     jQuery(".HomeBan").slide({ titCell: ".hd ul", mainCell: ".bd ul", effect: "fold", autoPlay: true, autoPage: true, trigger: "click" });
 
 
-    function getKey() {
+    // function getKey() {
 
-        if (event.keyCode == 13) {
+    //     if (event.keyCode == 13) {
         
-                var key = $.trim($("#key").val());
-                if (key == "" || key == "") {
-                    alert("输入关键词");
-                } else {
-                    key = key.replace("'", "");
-                    //document.searchform.action="/static/search/search.aspx?key=" + key;
-                    location.href = "static/search.aspx-keyword=.htm"/*tpa=http://www.etsc-tech.com/static//search.aspx?keyword=*/ + key;
+    //             var key = $.trim($("#key").val());
+    //             if (key == "" || key == "") {
+    //                 alert("输入关键词");
+    //             } else {
+    //                 key = key.replace("'", "");
+    //                 //document.searchform.action="/static/search/search.aspx?key=" + key;
+    //                 location.href = "static/search.aspx-keyword=.htm"/*tpa=http://www.etsc-tech.com/static//search.aspx?keyword=*/ + key;
 
-                }
-                return;
+    //             }
+    //             return;
        
-        }
+    //     }
 
 
 
-    }
+    // }
 
 
 </script>

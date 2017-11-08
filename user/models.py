@@ -138,10 +138,10 @@ class Brands(models.Model):
 class News(models.Model):
     title = models.CharField(max_length=255, verbose_name='文章标题')
     describe = models.CharField(max_length=255, verbose_name='描述')
+    isImportant = models.BooleanField(verbose_name='是否添加为首页大图新闻', default=False)
     picture = models.ImageField(upload_to='img/%Y/%m', verbose_name='首页大图')
     image = models.ImageField(upload_to='img/%Y/%m', verbose_name='新闻图例')
-    context = UEditorField(verbose_name='文章内容', width=1000, height=500, imagePath="ueditor/", filePath="ueditor/",
-                           default='')
+    context = UEditorField(verbose_name='文章内容', width=1000, height=500, imagePath="ueditor/", filePath="ueditor/", default='')
     pub_date = models.DateTimeField(auto_now_add=True, editable=True)
     update_time = models.DateTimeField(auto_now=True, null=True)
     click_count = models.IntegerField(default=0, verbose_name='点击数')
@@ -171,8 +171,7 @@ class News(models.Model):
 class AboutUs(models.Model):
     title = models.CharField(max_length=255, verbose_name='标题')
     # image = models.ImageField(upload_to='img/%Y/%m', verbose_name='地点截图', default='1')
-    context = UEditorField(verbose_name='公司介绍', width=1000, height=500, imagePath="ueditor/", filePath="ueditor/",
-                           default='')
+    context = UEditorField(verbose_name='公司介绍', width=1000, height=500, imagePath="ueditor/", filePath="ueditor/", default='')
     pub_date = models.DateTimeField(auto_now_add=True, editable=True)
     update_time = models.DateTimeField(auto_now=True, null=True)
 

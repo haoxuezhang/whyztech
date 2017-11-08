@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from .models import Products, ProductMainCate, ProductSecondCate, ApplicationCate, Brands, News
+from .models import Products, ProductMainCate, ProductSecondCate, ApplicationCate, Brands, News, AboutUs
 from django.views.generic import DetailView, ListView
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
 def index(request):
-    # applicationCate_list = Important.objects.all().order_by('-pub_date')[:4]
+    important_list = News.objects.all().order_by('-pub_date')[:4]
     # solution_list = Solutions.objects.all().order_by('-pub_date')[:4]
     # product_list = Products.objects.all().order_by('-pub_date')[:8]
     # news_list = News.objects.all().order_by('-pub_date')[:2]
@@ -18,69 +18,18 @@ def index(request):
     # newsCate_list = NewsCate.objects.all()
 
     context = {'productMainCate_list': productMainCate_list,
-               'applicationCate_list': applicationCate_list,
+               'application_list': applicationCate_list,
                'brand_list': brand_list,
+               'important_list': important_list,
                }
     return render(request, 'index.htm', context)
-
-
-# def solutionsList(request, category_id):
-#     article_list = Solutions.objects.filter(solutionCate_id=category_id).order_by('-pub_date')
-#     solutionCate_list = SolutionCate.objects.all()
-#     productCate_list = ProductCate.objects.all()
-#     newsCate_list = NewsCate.objects.all()
-#
-#     try:
-#         page = request.GET.get('page', 1)
-#     except PageNotAnInteger:
-#         page = 1
-#
-#     p = Paginator(article_list, 4, request=request)
-#     articles = p.page(page)
-#
-#     context = {'article_list': articles,
-#                'solutionCate_list': solutionCate_list,
-#                'productCate_list': productCate_list,
-#                'newsCate_list': newsCate_list,
-#                }
-#     return render(request, 'solutions.html', context)
-#
-#
-# class SolutionDetail(DetailView):
-#     # Django有基于类的视图DetailView,用于显示一个对象的详情页，我们继承它
-#     model = Solutions
-#     template_name = "solutions-inform.html"
-#     context_object_name = "article"
-#
-#     pk_url_kwarg = 'article_id'
-#
-#     def get_object(self):
-#         obj = super(SolutionDetail, self).get_object()
-#         return obj
-#
-#     def get_context_data(self, **kwargs):
-#         kwargs['solutionCate_list'] = SolutionCate.objects.all()
-#         kwargs['productCate_list'] = ProductCate.objects.all()
-#         kwargs['newsCate_list'] = NewsCate.objects.all()
-#         return super(SolutionDetail, self).get_context_data(**kwargs)
 
 
 def productSecondCateList(request, category_id):
     productSecondCate_list = ProductSecondCate.objects.filter(productMainCate_id=category_id)
     productMainCate_list = ProductMainCate.objects.all()
-    # solutionCate_list = SolutionCate.objects.all()
     productMainCate_list = ProductMainCate.objects.all()
     selectProductMainCate = ProductMainCate.objects.get(id=category_id)
-    # newsCate_list = NewsCate.objects.all()
-
-    # try:
-    #     page = request.GET.get('page', 1)
-    # except PageNotAnInteger:
-    #     page = 1
-    #
-    # p = Paginator(productSecondCate_list, 8, request=request)
-    # articles = p.page(page)
-
     context = {'productSecondCate_list': productSecondCate_list,
                'productMainCate_list': productMainCate_list,
                'category_id': category_id,
@@ -139,7 +88,7 @@ class ProductDetail(DetailView):
 class ApplicationDetail(DetailView):
     model = ApplicationCate
     template_name = "application.htm"
-    context_object_name = "application"
+    context_object_name = "selectedApplication"
 
     pk_url_kwarg = 'application_id'
 
@@ -148,7 +97,7 @@ class ApplicationDetail(DetailView):
         return obj
 
     def get_context_data(self, **kwargs):
-        # kwargs['solutionCate_list'] = SolutionCate.objects.all()
+        kwargs['application_list'] = ApplicationCate.objects.all()
         # kwargs['productCate_list'] = ProductCate.objects.all()
         # kwargs['newsCate_list'] = NewsCate.objects.all()
         return super(ApplicationDetail, self).get_context_data(**kwargs)
@@ -197,7 +146,16 @@ class NewsDetail(DetailView):
         # kwargs['newsCate_list'] = NewsCate.objects.all()
         return super(NewsDetail, self).get_context_data(**kwargs)
 
-#
+
+def BrandsList(request):
+    brands_list = Brands.objects.all().order_by('pub_date')
+    context = {
+        'brands_list': brands_list,
+
+    }
+    return render(request, 'brands.htm', context)
+
+
 # def exampleList(request):
 #     article_list = Example.objects.all().order_by('-pub_date')
 #
@@ -237,22 +195,21 @@ class NewsDetail(DetailView):
 #         kwargs['productCate_list'] = ProductCate.objects.all()
 #         kwargs['newsCate_list'] = NewsCate.objects.all()
 #         return super(ExampleDetail, self).get_context_data(**kwargs)
-#
-#
-# def aboutus(request):
-#     aboutus_list = Aboutus.objects.all().order_by('-pub_date')
-#
-#     solutionCate_list = SolutionCate.objects.all()
-#     productCate_list = ProductCate.objects.all()
-#     newsCate_list = NewsCate.objects.all()
-#     try:
-#         aboutus = aboutus_list[0]
-#     except:
-#         return
-#     context = {'aboutus': aboutus,
-#                'solutionCate_list': solutionCate_list,
-#                'productCate_list': productCate_list,
-#                'newsCate_list': newsCate_list,
-#
-#                }
-#     return render(request, 'about-us.html', context)
+
+
+def Aboutus(request):
+    aboutus_list = AboutUs.objects.all().order_by('-pub_date')
+
+    # solutionCate_list = SolutionCate.objects.all()
+    # productCate_list = ProductCate.objects.all()
+    # newsCate_list = NewsCate.objects.all()
+    try:
+        aboutus = aboutus_list[0]
+    except:
+        return
+    context = {'aboutus': aboutus,
+               # 'solutionCate_list': solutionCate_list,
+               # 'productCate_list': productCate_list,
+               # 'newsCate_list': newsCate_list,
+               }
+    return render(request, 'aboutUs.htm', context)

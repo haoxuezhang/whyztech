@@ -1,0 +1,32 @@
+{% extends 'base.htm' %}
+{% block content %}
+    <section class="Contain SubPage clearfix">
+        <div class="RightBar" style="width:auto; float:none;">
+            <a href="">
+                <!--<div class="Current">
+                  <h3>光谱影像</h3>
+                  <div class="place">您现在的位置：<a href="#">首页</a> - <a href="#">应用领域</a> - <span>光谱影像</span></div>
+                </div>
+                -->
+            </a>
+            <div class="BrandList">
+                <ul>
+                    {% for brand in brands_list %}
+                        <li>
+                            <div class="img"><a href="{{ brand.url }}" target="_blank"><img src="{{ MEDIA_URL }}{{ brand.logo }}" width="158" height="73"></a></div>
+                            <p>{{ brand.describe }}</p>
+
+                        </li>
+                    {% endfor %}
+                    
+
+                </ul>
+            </div>
+
+            <!--Pages-->
+            <!--Pages-->
+
+        </div>
+        <!--/右侧 end-->
+    </section>
+{% endblock %}
