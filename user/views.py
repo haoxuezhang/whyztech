@@ -6,45 +6,85 @@ from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 def index(request):
-    important_list = News.objects.all().order_by('-pub_date')[:4]
-    # solution_list = Solutions.objects.all().order_by('-pub_date')[:4]
-    # product_list = Products.objects.all().order_by('-pub_date')[:8]
-    # news_list = News.objects.all().order_by('-pub_date')[:2]
-    # example_list = Example.objects.all().order_by('-pub_date')
-
-    applicationCate_list = ApplicationCate.objects.all()
+    important_list = News.objects.filter(isImportant=True).order_by('-pub_date')[:5]
+    application_list = ApplicationCate.objects.all()
     productMainCate_list = ProductMainCate.objects.all()
     brand_list = Brands.objects.all()
-    # newsCate_list = NewsCate.objects.all()
+
+    try:
+        fistProductMainCate = productMainCate_list[0]
+    except:
+        return
+    try:
+        fistApplication = application_list[0]
+    except:
+        return
+    #前六个分类
+    if ProductMainCate.objects.all().count()>6:
+        productMainCate_list_1 = productMainCate_list[:6]
+        productMainCate_list_2 = productMainCate_list[6:]
+
 
     context = {'productMainCate_list': productMainCate_list,
-               'application_list': applicationCate_list,
+               'application_list': application_list,
                'brand_list': brand_list,
                'important_list': important_list,
+               'fistProductMainCate': fistProductMainCate,
+               'fistApplication': fistApplication,
+               'productMainCate_list_1': productMainCate_list_1,
+               'productMainCate_list_2': productMainCate_list_2,
                }
-    return render(request, 'index.htm', context)
+    return render(request, 'index_base.htm', context)
 
 
 def productSecondCateList(request, category_id):
+    important_list = News.objects.filter(isImportant=True).order_by('-pub_date')[:5]
+    application_list = ApplicationCate.objects.all()
+
     productSecondCate_list = ProductSecondCate.objects.filter(productMainCate_id=category_id)
     productMainCate_list = ProductMainCate.objects.all()
-    productMainCate_list = ProductMainCate.objects.all()
     selectProductMainCate = ProductMainCate.objects.get(id=category_id)
+
+    try:
+        fistProductMainCate = productMainCate_list[0]
+    except:
+        return
+    try:
+        fistApplication = application_list[0]
+    except:
+        return
+
     context = {'productSecondCate_list': productSecondCate_list,
                'productMainCate_list': productMainCate_list,
                'category_id': category_id,
                'selectProductMainCate': selectProductMainCate,
+               'important_list': important_list,
+               'application_list': application_list,
+               'fistProductMainCate': fistProductMainCate,
+               'fistApplication': fistApplication,
                }
     return render(request, 'productCategory.htm', context)
 
 
 def productList(request, category_id, secondCate_id):
+    important_list = News.objects.filter(isImportant=True).order_by('-pub_date')[:5]
+    application_list = ApplicationCate.objects.all()
+
     productSecondCate_list = ProductSecondCate.objects.filter(productMainCate_id=category_id)
     productMainCate_list = ProductMainCate.objects.all()
 
     selectProductMainCate = ProductMainCate.objects.get(id=category_id)
     selectProductSecondCate = ProductSecondCate.objects.get(id=secondCate_id)
     product_list = Products.objects.filter(productSecondCate_id=secondCate_id)
+
+    try:
+        fistProductMainCate = productMainCate_list[0]
+    except:
+        return
+    try:
+        fistApplication = application_list[0]
+    except:
+        return
 
     try:
         page = request.GET.get('page', 1)
@@ -60,7 +100,12 @@ def productList(request, category_id, secondCate_id):
                'productMainCate_list': productMainCate_list,
                'category_id': category_id,
                'secondCate_id': secondCate_id,
-               'product_list': articles
+               'product_list': articles,
+
+               'important_list': important_list,
+               'application_list': application_list,
+               'fistProductMainCate': fistProductMainCate,
+               'fistApplication': fistApplication,
                }
     return render(request, 'secondCate.htm', context)
 
@@ -79,9 +124,23 @@ class ProductDetail(DetailView):
         return obj
 
     def get_context_data(self, **kwargs):
-        # kwargs['solutionCate_list'] = SolutionCate.objects.all()
-        # kwargs['productCate_list'] = ProductCate.objects.all()
-        # kwargs['newsCate_list'] = NewsCate.objects.all()
+        important_list = News.objects.filter(isImportant=True).order_by('-pub_date')[:5]
+        application_list = ApplicationCate.objects.all()
+        productMainCate_list = ProductMainCate.objects.all()
+        try:
+            fistProductMainCate = productMainCate_list[0]
+        except:
+            return
+        try:
+            fistApplication = application_list[0]
+        except:
+            return
+        kwargs['important_list'] = important_list
+        kwargs['application_list'] = application_list
+        kwargs['productMainCate_list'] = productMainCate_list
+        kwargs['fistProductMainCate'] = fistProductMainCate
+        kwargs['fistApplication'] = fistApplication
+
         return super(ProductDetail, self).get_context_data(**kwargs)
 
 
@@ -97,14 +156,41 @@ class ApplicationDetail(DetailView):
         return obj
 
     def get_context_data(self, **kwargs):
-        kwargs['application_list'] = ApplicationCate.objects.all()
-        # kwargs['productCate_list'] = ProductCate.objects.all()
-        # kwargs['newsCate_list'] = NewsCate.objects.all()
+        important_list = News.objects.filter(isImportant=True).order_by('-pub_date')[:5]
+        productMainCate_list = ProductMainCate.objects.all()
+        application_list = ApplicationCate.objects.all()
+        try:
+            fistProductMainCate = productMainCate_list[0]
+        except:
+            return
+        try:
+            fistApplication = application_list[0]
+        except:
+            return
+
+        kwargs['application_list'] = application_list
+        kwargs['important_list'] = important_list
+        kwargs['productMainCate_list'] = productMainCate_list
+        kwargs['fistProductMainCate'] = fistProductMainCate
+        kwargs['fistApplication'] = fistApplication
         return super(ApplicationDetail, self).get_context_data(**kwargs)
 
 
 def NewsList(request):
+    important_list = News.objects.filter(isImportant=True).order_by('-pub_date')[:5]
+    application_list = ApplicationCate.objects.all()
+    productMainCate_list = ProductMainCate.objects.all()
+
     news_list = News.objects.all().order_by('-pub_date')
+
+    try:
+        fistProductMainCate = productMainCate_list[0]
+    except:
+        return
+    try:
+        fistApplication = application_list[0]
+    except:
+        return
 
     # solutionCate_list = SolutionCate.objects.all()
     # productCate_list = ProductCate.objects.all()
@@ -119,9 +205,11 @@ def NewsList(request):
     articles = p.page(page)
 
     context = {'news_list': articles,
-               # 'hot_news_list': hot_news_list,
-               # 'solutionCate_list': solutionCate_list,
-               # 'productCate_list': productCate_list,
+               'important_list': important_list,
+               'application_list': application_list,
+               'productMainCate_list': productMainCate_list,
+               'fistProductMainCate': fistProductMainCate,
+               'fistApplication': fistApplication,
                # 'newsCate_list': newsCate_list,
                }
     return render(request, 'newList.htm', context)
@@ -141,64 +229,65 @@ class NewsDetail(DetailView):
         return obj
 
     def get_context_data(self, **kwargs):
-        # kwargs['solutionCate_list'] = SolutionCate.objects.all()
-        # kwargs['productCate_list'] = ProductCate.objects.all()
-        # kwargs['newsCate_list'] = NewsCate.objects.all()
+        important_list = News.objects.filter(isImportant=True).order_by('-pub_date')[:5]
+        application_list = ApplicationCate.objects.all()
+        productMainCate_list = ProductMainCate.objects.all()
+        try:
+            fistProductMainCate = productMainCate_list[0]
+        except:
+            return
+        try:
+            fistApplication = application_list[0]
+        except:
+            return
+
+        kwargs['important_list'] = important_list
+        kwargs['application_list'] = application_list
+        kwargs['productMainCate_list'] = productMainCate_list
+        kwargs['fistProductMainCate'] = fistProductMainCate
+        kwargs['fistApplication'] = fistApplication
         return super(NewsDetail, self).get_context_data(**kwargs)
 
 
 def BrandsList(request):
-    brands_list = Brands.objects.all().order_by('pub_date')
-    context = {
-        'brands_list': brands_list,
+    important_list = News.objects.filter(isImportant=True).order_by('-pub_date')[:5]
+    application_list = ApplicationCate.objects.all()
+    productMainCate_list = ProductMainCate.objects.all()
 
+    brands_list = Brands.objects.all().order_by('pub_date')
+    try:
+        fistProductMainCate = productMainCate_list[0]
+    except:
+        return
+    try:
+        fistApplication = application_list[0]
+    except:
+        return
+    context = {
+        'important_list': important_list,
+        'application_list': application_list,
+        'productMainCate_list': productMainCate_list,
+        'brands_list': brands_list,
+        'fistProductMainCate': fistProductMainCate,
+        'fistApplication': fistApplication,
     }
     return render(request, 'brands.htm', context)
 
 
-# def exampleList(request):
-#     article_list = Example.objects.all().order_by('-pub_date')
-#
-#     solutionCate_list = SolutionCate.objects.all()
-#     productCate_list = ProductCate.objects.all()
-#     newsCate_list = NewsCate.objects.all()
-#
-#     try:
-#         page = request.GET.get('page', 1)
-#     except PageNotAnInteger:
-#         page = 1
-#
-#     p = Paginator(article_list, 3, request=request)
-#     articles = p.page(page)
-#
-#     context = {'article_list': articles,
-#                'solutionCate_list': solutionCate_list,
-#                'productCate_list': productCate_list,
-#                'newsCate_list': newsCate_list,
-#                }
-#     return render(request, 'examples.html', context)
-#
-#
-# class ExampleDetail(DetailView):
-#     model = Example
-#     template_name = "examples-inform.html"
-#     context_object_name = "article"
-#
-#     pk_url_kwarg = 'article_id'
-#
-#     def get_object(self):
-#         obj = super(ExampleDetail, self).get_object()
-#         return obj
-#
-#     def get_context_data(self, **kwargs):
-#         kwargs['solutionCate_list'] = SolutionCate.objects.all()
-#         kwargs['productCate_list'] = ProductCate.objects.all()
-#         kwargs['newsCate_list'] = NewsCate.objects.all()
-#         return super(ExampleDetail, self).get_context_data(**kwargs)
-
-
 def Aboutus(request):
+    important_list = News.objects.filter(isImportant=True).order_by('-pub_date')[:5]
+    application_list = ApplicationCate.objects.all()
+    productMainCate_list = ProductMainCate.objects.all()
+
     aboutus_list = AboutUs.objects.all().order_by('-pub_date')
+    try:
+        fistProductMainCate = productMainCate_list[0]
+    except:
+        return
+    try:
+        fistApplication = application_list[0]
+    except:
+        return
 
     # solutionCate_list = SolutionCate.objects.all()
     # productCate_list = ProductCate.objects.all()
@@ -208,8 +297,10 @@ def Aboutus(request):
     except:
         return
     context = {'aboutus': aboutus,
-               # 'solutionCate_list': solutionCate_list,
-               # 'productCate_list': productCate_list,
-               # 'newsCate_list': newsCate_list,
+               'important_list': important_list,
+               'application_list': application_list,
+               'productMainCate_list': productMainCate_list,
+               'fistProductMainCate': fistProductMainCate,
+               'fistApplication': fistApplication,
                }
     return render(request, 'aboutUs.htm', context)

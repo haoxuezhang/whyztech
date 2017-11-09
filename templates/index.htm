@@ -1,23 +1,23 @@
 ﻿{% extends 'base.htm' %}
 {% block content %}
     <section class="Contain">
-        <h2 class="HomeTit"><a href="/static/Products/list_38-1.aspx.htm"  class="more">更多</a>产品分类</h2>
+        <h2 class="HomeTit"><a href="/productMainCate/{{fistProductMainCate.id}}"  class="more">更多</a>产品分类</h2>
         <div class="HomePro">
             <ul>
 
                 <li>
-                    {% for productMainCate in productMainCate_list  %}
+                    {% for productMainCate_1 in productMainCate_list_1  %}
                         <dl>
                             <dd class="item">
-                                <a href="/productMainCate/{{productMainCate.id}}" >
+                                <a href="/productMainCate_1/{{productMainCate_1.id}}" >
                                     <div class="infotxt">
                                         <dl class="box">
-                                            <dt>{{productMainCate.name}}</dt>
-                                            <dd>{{productMainCate.describe}}</dd>
+                                            <dt>{{productMainCate_1.name}}</dt>
+                                            <dd>{{productMainCate_1.describe}}</dd>
                                         </dl>
                                     </div>
-                                    <p class="tit">{{productMainCate.name}}</p>
-                                    <div class="img"><img src="{{MEDIA_URL}}{{productMainCate.image}}" ></div>
+                                    <p class="tit">{{productMainCate_1.name}}</p>
+                                    <div class="img"><img src="{{MEDIA_URL}}{{productMainCate_1.image}}" ></div>
                                 </a>
                             </dd>
                         </dl>
@@ -25,7 +25,27 @@
 
                 </li>
                 <li>
+                        {% for productMainCate_2 in productMainCate_list_2  %}
                         <dl>
+                            <dd class="item">
+                                <a href="/productMainCate_2/{{productMainCate_2.id}}" >
+                                    <div class="infotxt">
+                                        <dl class="box">
+                                            <dt>{{productMainCate_2.name}}</dt>
+                                            <dd>{{productMainCate_2.describe}}</dd>
+                                        </dl>
+                                    </div>
+                                    <p class="tit">{{productMainCate_2.name}}</p>
+                                    <div class="img"><img src="{{MEDIA_URL}}{{productMainCate_2.image}}" ></div>
+                                </a>
+                            </dd>
+                        </dl>
+                        {% endfor %}
+
+
+
+
+                        <!-- <dl>
                             <dd class="item">
                                 <a href="static/products/list_263-1.aspx.htm" >
                                     <div class="infotxt">
@@ -38,10 +58,15 @@
                                     <div class="img"><img src="/static/uploadfiles/2017/08/20170816110258258.png" ></div>
                                 </a>
                             </dd>
-                        </dl>
+                        </dl> -->
                 </li>
 
             </ul>
+                   {% for productMainCate in productMainCate_list  %}
+                   <a class="prev"></a> <a class="next"></a>
+                   {% endfor %}
+
+                   <!-- <a class="prev"></a> <a class="next"></a>
 
                    <a class="prev"></a> <a class="next"></a>
 
@@ -51,17 +76,13 @@
 
                    <a class="prev"></a> <a class="next"></a>
 
-                   <a class="prev"></a> <a class="next"></a>
-
-                   <a class="prev"></a> <a class="next"></a>
-
-                   <a class="prev"></a> <a class="next"></a>
+                   <a class="prev"></a> <a class="next"></a> -->
 
         </div>
         <script type="text/javascript">jQuery(".HomePro").slide({ mainCell:"ul",autoPlay:false,effect:"leftLoop", vis:1, scroll:1, autoPage:true, pnLoop:true });</script>
         <!--/产品分类 end-->
 
-        <h2 class="HomeTit"><a href="/static/Applications/list_27.aspx.htm"  class="more">更多</a>应用领域</h2>
+        <h2 class="HomeTit"><a href="/application/{{fistApplication.id}}"  class="more">更多</a>应用领域</h2>
         <div class="HomeArea">
             <ul>
                 {% for application in application_list %}

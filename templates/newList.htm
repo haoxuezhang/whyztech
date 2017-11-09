@@ -42,8 +42,8 @@
 
                     {% if news_list.has_previous %}
                         <a href="?{{ news_list.previous_page_number.querystring }}" class='a_prev'>上一页</a>
-                        <em class="num">
-                            {% endif %}
+                        {% endif %}
+                        <em class="num">                            
                             {% for page in news_list.pages %}
                             {% if page %}
                             {% ifequal page news_list.number %}

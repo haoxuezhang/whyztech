@@ -76,8 +76,9 @@
                         <!--<a href='javascript:void(0);' class='a_first'>首页</a>-->
                         {% if product_list.has_previous %}
                         <a href="?{{ product_list.previous_page_number.querystring }}" class='a_prev'>上一页</a>
+                        {% endif %}
                         <em class="num">
-                            {% endif %}
+                            
                             {% for page in product_list.pages %}
                             {% if page %}
                             {% ifequal page product_list.number %}

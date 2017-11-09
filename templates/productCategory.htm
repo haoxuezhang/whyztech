@@ -56,13 +56,28 @@
         <div class='Pages'>
         <span class='p_page'>
             
-                <a href='javascript:void(0);' class='a_first'>首页</a>
-                <a href='javascript:void(0);' class='a_prev'>上一页</a>
+                <!-- <a href='javascript:void(0);' class='a_first'>首页</a> -->
+                {% if article_list.has_previous %}
+                <a href='?{{ article_list.previous_page_number.querystring }}' class='a_prev'>上一页</a>
+                {% endif %}
+                
                 <em class="num">
-                    <a href="list_39.aspx-page=1.htm" tppabs="http://www.etsc-tech.com/cn/Products/list_39.aspx?page=1" class='a_cur'>1</a>
+                    {% for page in article_list.pages %}
+                    {% if page %}
+                    {% ifequal page article_list.number %}
+                    <a href="?{{ page.querystring }}" class='a_cur'>{{page}}</a>
+                    {% else %}
+                    <a href="?{{ page.querystring }}" class='a_num'>{{page}}</a>
+                    {% endifequal %}
+                    {% else %}
+                    ...
+                    {% endif %}
+                    {% endfor %}
                 </em>
+                {% if article_list.has_next %}
                 <a href='javascript:void(0);' class='a_next'>下一页</a>
-                <a href='javascript:void(0);' class='a_end'>尾页</a>
+                {% endif %}
+                <!-- <a href='javascript:void(0);' class='a_end'>尾页</a> -->
             <script type='text/javascript'> function redirectPage_(inputID){      var inputValue = document.getElementById(inputID).value;     if(!(/^\d+$/).test(inputValue)){ document.getElementById(inputID).value = '1'; return; }      if(inputValue <= 0) { inputValue = 1; }      if(inputValue > 1) { inputValue = 1; }      location.href = 'list_39.aspx-page={$wtl_pager}.htm'/*tpa=http://www.etsc-tech.com/cn/Products/list_39.aspx?page={$wtl_pager}*/.replace('{$wtl_pager}', inputValue); } </script> 
         </span>
         </div> 

@@ -7,22 +7,23 @@
 <!--
                        (0 0)
    +=============oOO====(_)================+
-   |   Powered By hejiahao - www.hjhgo.cn |
-   |   hust——好学长      |
+   |   Author: 何佳豪 hejiahao - 好学长 hust |
+   |   Email: jiahaohe_123@163.com         |
+   |   website: www.hjhgo.cn               |
    |   Creation:2017.11.10                 |
-   |   ezEip v4.1.0                        |
+   |   Version: v1.0                       |
    +==========================oOO==========+
                       |__|__|
                        || ||
                       ooO Ooo
 -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="Author" content="万户网络">
+<meta name="Author" content="何佳豪">
 <meta content="万户网络 www.wanhu.com.cn" name="design">
-<meta name="Author" content="万户网络设计制作" />
+<meta name="Author" content="何佳豪" />
 <title>华中科技大学能源学院</title>
-<meta name="keywords" content="武汉东隆科技有限公司" />
-<meta name="Description" content="武汉东隆科技有限公司" />
+<meta name="keywords" content="华中科技大学能源学院" />
+<meta name="Description" content="华中科技大学能源学院" />
 
 <link href="/static/css/css_whir.css"  rel="stylesheet" type="text/css">
 <link rel="Shortcut icon" href="/static/images/favicon.ico" />
@@ -86,7 +87,7 @@
  
 <header class="Header">
     <div class="Contain">
-        <h1 class="Logo"><a href="index.aspx.htm" >
+        <h1 class="Logo"><a href="/" >
                              
                                  <img src="/static/uploadfiles/2017/08/20170822110454454.png"  width="256" />
                              
@@ -95,7 +96,7 @@
             <div class="toper">
                 <div class="search">
                     <input type="text" name="textfield" id="key" onkeydown="getKey(event);" class="input">
-                    <input type="image" name="imageField" id="imageField" >
+                    <input type="image" name="imageField" id="imageField"  src="/static/images/searchbtn.png" >
                 </div>
 
  
@@ -103,10 +104,10 @@
             </div>
             <nav class="nav">
                 <ul>
-                    <li id="nav1"><span><a href="/" >首 页</a></span></li>
+                    <li id="nav1" {% if request.path == "/" %}class="onnav"{% endif %}><span><a href="/" >首 页</a></span></li>
                     
-                        <li id="nav12">
-                            <span><a >产品分类</a></span>
+                        <li id="nav12" {% if request.path|slice:"4" == "/pro" %}class="onnav"{% endif %}>
+                            <span><a href="/productMainCate/{{fistProductMainCate.id}}">产品分类</a></span>
                             <div class="SubNav">
                                 <dl>
                                     {% for productMainCate in productMainCate_list %}
@@ -116,8 +117,8 @@
                             </div>
                         </li>
                     
-                        <li id="nav13">
-                            <span><a >应用领域</a></span>
+                        <li id="nav13" {% if request.path|slice:"4" == "/app" %}class="onnav"{% endif %}>
+                            <span><a href="/application/{{fistApplication.id}}">应用领域</a></span>
                             <div class="SubNav">
                                 <dl>
                                     {% for application in application_list %}
@@ -129,7 +130,7 @@
                             </div>
                         </li>
                     
-                        <li id="nav14">
+                        <li id="nav14" {% if request.path|slice:"4" == "/bra" %}class="onnav"{% endif %}>
                             <span><a href="/brands" >代理品牌</a></span>
                             <div class="SubNav">
                                 <dl>
@@ -138,8 +139,20 @@
                                 </dl>
                             </div>
                         </li>
+
+                        <li id="nav17" {% if request.path|slice:"4" == "/new" %}class="onnav"{% endif %}>
+                                <span><a href="/news" >公司新闻</a></span>
+                                <div class="SubNav">
+                                    <dl>
+                                        
+                                            <!--<dd><a href="static/news/list_19.aspx.htm" >新闻资讯</a></dd>-->
+                                        
+    
+                                    </dl>
+                                </div>
+                            </li>
                     
-                        <li id="nav16">
+                        <li id="nav16" {% if request.path|slice:"4" == "/abo" %}class="onnav"{% endif %}>
                             <span><a href="/aboutus" >关于我们</a></span>
                             <div class="SubNav">
                                 <dl>
@@ -153,17 +166,17 @@
                             </div>
                         </li>
                     
-                        <li id="nav17">
+                        <!-- <li id="nav17">
                             <span><a href="/news" >公司新闻</a></span>
                             <div class="SubNav">
                                 <dl>
                                     
-                                        <!--<dd><a href="static/news/list_19.aspx.htm" >新闻资讯</a></dd>-->
+                                        <dd><a href="static/news/list_19.aspx.htm" >新闻资讯</a></dd>
                                     
 
                                 </dl>
                             </div>
-                        </li>
+                        </li> -->
                     
                         <!--<li id="nav18">-->
                             <!--<span><a href="static/linkUs/index_18.aspx.htm" >联系我们</a></span>-->
@@ -211,26 +224,26 @@
     jQuery(".HomeBan").slide({ titCell: ".hd ul", mainCell: ".bd ul", effect: "fold", autoPlay: true, autoPage: true, trigger: "click" });
 
 
-    // function getKey() {
+    function getKey() {
 
-    //     if (event.keyCode == 13) {
+        if (event.keyCode == 13) {
         
-    //             var key = $.trim($("#key").val());
-    //             if (key == "" || key == "") {
-    //                 alert("输入关键词");
-    //             } else {
-    //                 key = key.replace("'", "");
-    //                 //document.searchform.action="/static/search/search.aspx?key=" + key;
-    //                 location.href = "static/search.aspx-keyword=.htm"/*tpa=http://www.etsc-tech.com/static//search.aspx?keyword=*/ + key;
+                var key = $.trim($("#key").val());
+                if (key == "" || key == "") {
+                    alert("输入关键词");
+                } else {
+                    key = key.replace("'", "");
+                    //document.searchform.action="/static/search/search.aspx?key=" + key;
+                    location.href = "static/search.aspx-keyword=.htm"/*tpa=http://www.etsc-tech.com/static//search.aspx?keyword=*/ + key;
 
-    //             }
-    //             return;
+                }
+                return;
        
-    //     }
+        }
 
 
 
-    // }
+    }
 
 
 </script>
@@ -250,7 +263,7 @@
                 Copyright © 2017  东隆科技有限公司 All Rights Reserved. <a href="javascript:if(confirm('http://www.miitbeian.gov.static/  \n\n���ļ�δ�� Teleport Pro ���أ���Ϊ ��λ����ʼ��ַ�����õı߽���������·���С�  \n\n����Ҫ�ӷ�����������?'))window.location='http://www.miitbeian.gov.static/'"  target="_blank">鄂ICP备05008104号 </a><br>
                 地址：湖北省武汉市东湖开发区高新大道999号 武汉未来科技城海外人才大楼B4座14楼(430206)
             </div>
-            <div class="design">Designed by <a href="javascript:if(confirm('http://www.wanhu.com.static/  \n\n���ļ�δ�� Teleport Pro ���أ���Ϊ ��λ����ʼ��ַ�����õı߽���������·���С�  \n\n����Ҫ�ӷ�����������?'))window.location='http://www.wanhu.com.static/'"  target="_blank">Wanhu</a></div>
+            <div class="design">Designed by <a href="http://www.hjhgo.cn/"  target="_blank">hust</a></div>
             <div class="adv"><img src="/static/uploadfiles/2017/09/20170906103602362.png"  /></div>
 
         </div>
@@ -261,17 +274,16 @@
 <div class="FloatRight">
     <ul>
         
-            <li>
+            <!-- <li>
                 <div><a href="javascript:if(confirm('http://p.qiao.baidu.com/cps/chatIndex?reqParam=%7B%22from%22%3A0%2C%22sid%22%3A%22-100%22%2C%22tid%22%3A%22-1%22%2C%22ttype%22%3A1%2C%22siteId%22%3A%2210388640%22%2C%22userId%22%3A%2223153342%22%2C%22pageId%22%3A0%7D  \n\n���ļ�δ�� Teleport Pro ���أ���Ϊ ��λ����ʼ��ַ�����õı߽���������·���С�  \n\n����Ҫ�ӷ�����������?'))window.location='http://p.qiao.baidu.com/cps/chatIndex?reqParam=%7B%22from%22%3A0%2C%22sid%22%3A%22-100%22%2C%22tid%22%3A%22-1%22%2C%22ttype%22%3A1%2C%22siteId%22%3A%2210388640%22%2C%22userId%22%3A%2223153342%22%2C%22pageId%22%3A0%7D'"  target="_blank">
                     <i class="ewm"></i><span class="txt">在线咨询</span>
-                <!--<div class="ewmimg"><span class="img"><img src="/s/tatic/uploadfiles/2017/07/20170728100748748.jpg" width="118" height="118" /></span>-->
                 </a></div>
-            </li>
+            </li> -->
             <li>
-                <div><a href="javascript:if(confirm('http://wpa.qq.com/msgrd?v=1&uin=499269653&site=qq&menu=yes  \n\n���ļ�δ�� Teleport Pro ���أ���Ϊ ��λ����ʼ��ַ�����õı߽���������·���С�  \n\n����Ҫ�ӷ�����������?'))window.location='http://wpa.qq.com/msgrd?v=1&uin=499269653&site=qq&menu=yes'"  target="_blank"><i class="qq"></i><span class="txt">QQ咨询</span></a></div>
+                <div><a href="http://wpa.qq.com/msgrd?v=1&uin=499269653&site=qq&menu=yes"  target="_blank"><i class="qq"></i><span class="txt">QQ咨询</span></a></div>
             </li>            
             <li>
-                <div class="hotline"><i class="tel"></i><span class="txt">电话</span><span class="txt2">86 27 87807177</span></div>
+                <div class="hotline"><i class="tel"></i><span class="txt">电话</span><span class="txt2">111111111</span></div>
             </li>
         
     </ul>
