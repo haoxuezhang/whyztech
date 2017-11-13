@@ -11,18 +11,30 @@ def index(request):
     productMainCate_list = ProductMainCate.objects.all()
     brand_list = Brands.objects.all()
 
-    try:
+    if productMainCate_list.count()>0:
         fistProductMainCate = productMainCate_list[0]
-    except:
-        return
-    try:
+    else:
+        fistProductMainCate = None
+    if application_list.count()>0:
         fistApplication = application_list[0]
-    except:
-        return
+    else:
+        fistApplication = None
+
+    # try:
+    #     fistProductMainCate = productMainCate_list[0]
+    # except:
+    #     return
+    # try:
+    #     fistApplication = application_list[0]
+    # except:
+    #     return
     #前六个分类
     if ProductMainCate.objects.all().count()>6:
         productMainCate_list_1 = productMainCate_list[:6]
         productMainCate_list_2 = productMainCate_list[6:]
+    else:
+        productMainCate_list_1 = productMainCate_list[:6]
+        productMainCate_list_2 = None
 
 
     context = {'productMainCate_list': productMainCate_list,
@@ -45,14 +57,14 @@ def productSecondCateList(request, category_id):
     productMainCate_list = ProductMainCate.objects.all()
     selectProductMainCate = ProductMainCate.objects.get(id=category_id)
 
-    try:
+    if productMainCate_list.count()>0:
         fistProductMainCate = productMainCate_list[0]
-    except:
-        return
-    try:
+    else:
+        fistProductMainCate = None
+    if application_list.count()>0:
         fistApplication = application_list[0]
-    except:
-        return
+    else:
+        fistApplication = None
 
     context = {'productSecondCate_list': productSecondCate_list,
                'productMainCate_list': productMainCate_list,
@@ -77,14 +89,14 @@ def productList(request, category_id, secondCate_id):
     selectProductSecondCate = ProductSecondCate.objects.get(id=secondCate_id)
     product_list = Products.objects.filter(productSecondCate_id=secondCate_id)
 
-    try:
+    if productMainCate_list.count()>0:
         fistProductMainCate = productMainCate_list[0]
-    except:
-        return
-    try:
+    else:
+        fistProductMainCate = None
+    if application_list.count()>0:
         fistApplication = application_list[0]
-    except:
-        return
+    else:
+        fistApplication = None
 
     try:
         page = request.GET.get('page', 1)
@@ -127,14 +139,14 @@ class ProductDetail(DetailView):
         important_list = News.objects.filter(isImportant=True).order_by('-pub_date')[:5]
         application_list = ApplicationCate.objects.all()
         productMainCate_list = ProductMainCate.objects.all()
-        try:
+        if productMainCate_list.count() > 0:
             fistProductMainCate = productMainCate_list[0]
-        except:
-            return
-        try:
+        else:
+            fistProductMainCate = None
+        if application_list.count() > 0:
             fistApplication = application_list[0]
-        except:
-            return
+        else:
+            fistApplication = None
         kwargs['important_list'] = important_list
         kwargs['application_list'] = application_list
         kwargs['productMainCate_list'] = productMainCate_list
@@ -159,14 +171,14 @@ class ApplicationDetail(DetailView):
         important_list = News.objects.filter(isImportant=True).order_by('-pub_date')[:5]
         productMainCate_list = ProductMainCate.objects.all()
         application_list = ApplicationCate.objects.all()
-        try:
+        if productMainCate_list.count() > 0:
             fistProductMainCate = productMainCate_list[0]
-        except:
-            return
-        try:
+        else:
+            fistProductMainCate = None
+        if application_list.count() > 0:
             fistApplication = application_list[0]
-        except:
-            return
+        else:
+            fistApplication = None
 
         kwargs['application_list'] = application_list
         kwargs['important_list'] = important_list
@@ -183,14 +195,14 @@ def NewsList(request):
 
     news_list = News.objects.all().order_by('-pub_date')
 
-    try:
+    if productMainCate_list.count()>0:
         fistProductMainCate = productMainCate_list[0]
-    except:
-        return
-    try:
+    else:
+        fistProductMainCate = None
+    if application_list.count()>0:
         fistApplication = application_list[0]
-    except:
-        return
+    else:
+        fistApplication = None
 
     # solutionCate_list = SolutionCate.objects.all()
     # productCate_list = ProductCate.objects.all()
@@ -232,14 +244,14 @@ class NewsDetail(DetailView):
         important_list = News.objects.filter(isImportant=True).order_by('-pub_date')[:5]
         application_list = ApplicationCate.objects.all()
         productMainCate_list = ProductMainCate.objects.all()
-        try:
+        if productMainCate_list.count() > 0:
             fistProductMainCate = productMainCate_list[0]
-        except:
-            return
-        try:
+        else:
+            fistProductMainCate = None
+        if application_list.count() > 0:
             fistApplication = application_list[0]
-        except:
-            return
+        else:
+            fistApplication = None
 
         kwargs['important_list'] = important_list
         kwargs['application_list'] = application_list
@@ -255,14 +267,14 @@ def BrandsList(request):
     productMainCate_list = ProductMainCate.objects.all()
 
     brands_list = Brands.objects.all().order_by('pub_date')
-    try:
+    if productMainCate_list.count()>0:
         fistProductMainCate = productMainCate_list[0]
-    except:
-        return
-    try:
+    else:
+        fistProductMainCate = None
+    if application_list.count()>0:
         fistApplication = application_list[0]
-    except:
-        return
+    else:
+        fistApplication = None
     context = {
         'important_list': important_list,
         'application_list': application_list,
@@ -280,22 +292,26 @@ def Aboutus(request):
     productMainCate_list = ProductMainCate.objects.all()
 
     aboutus_list = AboutUs.objects.all().order_by('-pub_date')
-    try:
+    if productMainCate_list.count()>0:
         fistProductMainCate = productMainCate_list[0]
-    except:
-        return
-    try:
+    else:
+        fistProductMainCate = None
+    if application_list.count()>0:
         fistApplication = application_list[0]
-    except:
-        return
+    else:
+        fistApplication = None
 
     # solutionCate_list = SolutionCate.objects.all()
     # productCate_list = ProductCate.objects.all()
     # newsCate_list = NewsCate.objects.all()
-    try:
+    if aboutus_list.count()>0:
         aboutus = aboutus_list[0]
-    except:
-        return
+    else:
+        aboutus = None
+    # try:
+    #     aboutus = aboutus_list[0]
+    # except:
+    #     return
     context = {'aboutus': aboutus,
                'important_list': important_list,
                'application_list': application_list,
