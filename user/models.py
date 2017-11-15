@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
 from DjangoUeditor.models import UEditorField
 
 
@@ -19,43 +18,12 @@ class UserProfile(AbstractUser):
         return self.username
 
 
-# class Important(models.Model):
-#     title = models.CharField(max_length=255, verbose_name='标题')
-#     image = models.ImageField(upload_to='img/%Y/%m', verbose_name='首页大图')
-#     pub_date = models.DateTimeField(auto_now_add=True, editable=True)
-#     update_time = models.DateTimeField(auto_now=True, null=True)
-#
-#     class Meta:
-#         verbose_name = '首页大图'
-#         verbose_name_plural = verbose_name
-#
-#     def __str__(self):
-#         return self.title
-#
-#
-# class Application(models.Model):
-#     applicationCate = models.ForeignKey('ApplicationCate', verbose_name='应用领域分类')
-#     title = models.CharField(max_length=255, verbose_name='标题')
-#     describe = models.CharField(max_length=255, verbose_name='描述')
-#     context = UEditorField(verbose_name='文章内容', width=1000, height=500, imagePath="ueditor/", filePath="ueditor/",
-#                            default='')
-#     pub_date = models.DateTimeField(auto_now_add=True, editable=True)
-#     update_time = models.DateTimeField(auto_now=True, null=True)
-#
-#     class Meta:
-#         verbose_name = '解决方案'
-#         verbose_name_plural = verbose_name
-#
-#     def __str__(self):
-#         return self.title
-
-
 class ApplicationCate(models.Model):
     id = models.CharField(max_length=10, primary_key=True, verbose_name='分类ID(限英文字母)')
     name = models.CharField(max_length=50, verbose_name='应用领域名称')
-    context = UEditorField(verbose_name='具体介绍', width=1000, height=500, imagePath="ueditor/", filePath="ueditor/", default='')
     image = models.ImageField(upload_to='img/%Y/%m', verbose_name='应用领域图片')
     describe = models.TextField(max_length=511, verbose_name='描述')
+    context = UEditorField(verbose_name='具体介绍', width=1000, height=500, imagePath="ueditor/", filePath="ueditor/", default='')
     created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     last_modified_time = models.DateTimeField(auto_now=True, verbose_name='修改时间')
 
@@ -69,8 +37,8 @@ class ApplicationCate(models.Model):
 
 class Products(models.Model):
     productSecondCate = models.ForeignKey('ProductSecondCate', verbose_name='产品细化分类')
-    title = models.CharField(max_length=255, verbose_name='标题')
-    describe = models.TextField(max_length=511, verbose_name='描述')
+    title = models.CharField(max_length=255, verbose_name='产品名称')
+    describe = models.TextField(max_length=511, verbose_name='产品描述')
     image = models.ImageField(upload_to='img/%Y/%m', verbose_name='案例图片')
     context = UEditorField(verbose_name='具体介绍', width=1000, height=500, imagePath="ueditor/", filePath="ueditor/", default='')
     pub_date = models.DateTimeField(auto_now_add=True, editable=True)
@@ -119,7 +87,7 @@ class ProductMainCate(models.Model):
 
 class Brands(models.Model):
     title = models.CharField(max_length=255, verbose_name='代理品牌')
-    describe = models.CharField(max_length=255, verbose_name='品牌描述')
+    describe = models.TextField(max_length=255, verbose_name='品牌描述')
     logo = models.ImageField(upload_to='img/%Y/%m', verbose_name='品牌logo')
     url = models.URLField(verbose_name='代理品牌网页地址')
     # image = models.ImageField(upload_to='img/%Y/%m', verbose_name='案例图片')
@@ -152,25 +120,10 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
-#
-#
-# class NewsCate(models.Model):
-#     id = models.CharField(max_length=10, primary_key=True, verbose_name='分类ID')
-#     name = models.CharField(max_length=50, verbose_name='分类')
-#     created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
-#     last_modified_time = models.DateTimeField(auto_now=True, verbose_name='修改时间')
-#
-#     class Meta:
-#         verbose_name = '新闻动态分类'
-#         verbose_name_plural = verbose_name
-#
-#     def __str__(self):
-#         return self.name
 
 
 class AboutUs(models.Model):
     title = models.CharField(max_length=255, verbose_name='标题')
-    # image = models.ImageField(upload_to='img/%Y/%m', verbose_name='地点截图', default='1')
     context = UEditorField(verbose_name='公司介绍', width=1000, height=500, imagePath="ueditor/", filePath="ueditor/", default='')
     pub_date = models.DateTimeField(auto_now_add=True, editable=True)
     update_time = models.DateTimeField(auto_now=True, null=True)
