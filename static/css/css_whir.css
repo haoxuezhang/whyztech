@@ -63,7 +63,7 @@ textarea::-webkit-input-placeholder {
 .MainNav .nav{ clear:both; padding-top:7px;}
 .MainNav li{ position:relative; z-index:999; float:left; padding-left:62px;}
 .MainNav li span a{color:#222222; display:block; height:48px; line-height:34px;}
-.MainNav li span a:hover,.MainNav li span .sele,.MainNav li.onnav span a{color:#9665d5; font-weight:bold; background:url("../images/navline.gif"/*tpa=http://www.etsc-tech.com/cn/images/navline.gif*/) center 33px no-repeat;transition:all 0s linear; -webkit-transition:all 0s linear;}
+.MainNav li span a:hover,.MainNav li span .sele,.MainNav li.onnav span a{color:#9665d5; font-weight:bold; background:url(../images/navline.gif) center 33px no-repeat;transition:all 0s linear; -webkit-transition:all 0s linear;}
 .SubNav{ display:none; position:absolute;left:40px; margin-left:0px;width:110px; text-align:center; background:#fff; border-radius:0px 0px 5px 5px; box-shadow:0px 5px 5px #ccc;}
 .SubNav dd a{display:block; border-bottom:1px solid #e3e3e3; padding:5px 0px;}
 .SubNav dd a:hover{ background:#9665d5; color:#fff;}
@@ -86,9 +86,9 @@ textarea::-webkit-input-placeholder {
 .FloatRight li{ color:#fff; position:relative; line-height:35px; height:64px; text-align:center; cursor:pointer; border-bottom:1px dashed #5f645c;}
 .FloatRight li div{ position:absolute; left:0px; right:0px; top:0px; z-index:15; width:52px; height:64px; overflow:hidden;}
 .FloatRight li i{ display:inline-block; width:30px; height:30px; vertical-align:middle;}
-.FloatRight li i.qq{ background:url("../images/floaticon.png"/*tpa=http://www.etsc-tech.com/cn/images/floaticon.png*/) 0px top no-repeat;}
-.FloatRight li i.ewm{ background:url("../images/ewm_03.png"/*tpa=http://www.etsc-tech.com/cn/images/ewm_03.png*/) center top no-repeat; width:25px; height:25px;}
-.FloatRight li i.tel{ background:url("../images/floaticon.png"/*tpa=http://www.etsc-tech.com/cn/images/floaticon.png*/) -60px top no-repeat;}
+.FloatRight li i.qq{ background:url(../images/floaticon.png) 0px top no-repeat;}
+.FloatRight li i.ewm{ background:url(../images/ewm_03.png) center top no-repeat; width:25px; height:25px;}
+.FloatRight li i.tel{ background:url(../images/floaticon.png) -60px top no-repeat;}
 .FloatRight li a{ color:#fff; display:block;}
 .FloatRight li:hover{ background:#a67adf;}
 .FloatRight li .txt{ line-height:19px; display:block; font-size:12px;}
@@ -124,7 +124,7 @@ textarea::-webkit-input-placeholder {
 .HomeBan:hover .prev{ left:15px;transition:all 0.2s linear; -webkit-transition:all 0.2s linear;}
 .HomeBan:hover .next{ right:15px;transition:all 0.2s linear; -webkit-transition:all 0.2s linear;}
 */
-.HomeTit{ position:relative; background:url("../images/arr.gif"/*tpa=http://www.etsc-tech.com/cn/images/arr.gif*/) 0px center no-repeat; padding-left:28px; font-size:20px; color:#222222; line-height:64px;}
+.HomeTit{ position:relative; background:url(../images/arr.gif) 0px center no-repeat; padding-left:28px; font-size:20px; color:#222222; line-height:64px;}
 .HomeTit a.more{ position:absolute; right:0px; color:#888888; font-size:12px; font-weight:normal;}
 .HomeTit a:hover.more{ color:#9665d5;}
 
@@ -132,7 +132,7 @@ textarea::-webkit-input-placeholder {
 .HomePro ul{ overflow:hidden; zoom:1;}
 .HomePro ul li dl{ margin-left:-25px;}
 .HomePro ul li dl .item{ margin:0px 0px 20px 25px; display:inline; float:left; position:relative; width:343px; height:210px; background:#f3f2f8;}
-.HomePro ul li dl .item .infotxt{ background:url("../images/filter58z.png"/*tpa=http://www.etsc-tech.com/cn/images/filter58z.png*/); position:absolute; width:100%; height:100%; display:none;}
+.HomePro ul li dl .item .infotxt{ background:url(../images/filter58z.png); position:absolute; width:100%; height:100%; display:none;}
 .HomePro ul li dl .item .infotxt .box{ border:1px solid #ebe2f7; color:#fff; width:86%; height:80%; position:absolute; left:7%; top:10%; margin:0px;}
 .HomePro ul li dl .item .infotxt .box dt{ font-size:18px; padding-top:6px; line-height:50px; text-align:center;}
 .HomePro ul li dl .item .infotxt .box dd{ line-height:25px; padding:0px 25px;}
@@ -141,7 +141,7 @@ textarea::-webkit-input-placeholder {
 .HomePro ul li .img{ padding-top:17px;}
 .HomePro ul li img{ display:block; margin:0px auto; max-width:346px; height:176px;}
 .HomePro .prev,
-.HomePro .next{ position:absolute;left:10px; top: 50%; margin-top:-22px; display:block; width:40px; height:40px; overflow:hidden; background:url("../images/banarr.png"/*tpa=http://www.etsc-tech.com/cn/images/banarr.png*/) 0px top no-repeat; cursor:pointer;transition:all 0.2s linear; -webkit-transition:all 0.2s linear;}
+.HomePro .next{ position:absolute;left:10px; top: 50%; margin-top:-22px; display:block; width:40px; height:40px; overflow:hidden; background:url(../images/banarr.png) 0px top no-repeat; cursor:pointer;transition:all 0.2s linear; -webkit-transition:all 0.2s linear;}
 .HomePro .next{ left:auto; right:10px; background-position:-40px 0;}
 /*.HomePro:hover .prev{ left:10px;transition:all 0.2s linear; -webkit-transition:all 0.2s linear;}
 .HomePro:hover .next{ right:10px;transition:all 0.2s linear; -webkit-transition:all 0.2s linear;}
@@ -151,11 +151,11 @@ textarea::-webkit-input-placeholder {
 .HomeArea li{ width:258px; height:261px; margin-right:18px; float:left; display:inline; position:relative;}
 .HomeArea li .img img{ display:block; width:258px; height:200px;}
 .HomeArea li .tit{ font-size:16px; color:#000000; text-align:center; padding-top:14px;}
-.HomeArea li .infotxt{ background:url("../images/filter58z.png"/*tpa=http://www.etsc-tech.com/cn/images/filter58z.png*/); position:absolute; width:100%; height:200px; display:none;}
+.HomeArea li .infotxt{ background:url(../images/filter58z.png); position:absolute; width:100%; height:200px; display:none;}
 .HomeArea li .infotxt .box{ border:1px solid #ebe2f7; color:#fff; width:226px; height:168px; position:absolute; left:15px; top:15px; margin:0px;}
 .HomeArea li .infotxt .box dd{ line-height:30px; padding:12px 18px 0px;}
 .HomeArea .prev,
-.HomeArea .next{ position:absolute;left:10px; top: 50%; margin-top:-59px; display:block; width:40px; height:40px; overflow:hidden; background:url("../images/banarr2.png"/*tpa=http://www.etsc-tech.com/cn/images/banarr2.png*/) 0px top no-repeat; cursor:pointer;transition:all 0.2s linear; -webkit-transition:all 0.2s linear;}
+.HomeArea .next{ position:absolute;left:10px; top: 50%; margin-top:-59px; display:block; width:40px; height:40px; overflow:hidden; background:url(../images/banarr2.png) 0px top no-repeat; cursor:pointer;transition:all 0.2s linear; -webkit-transition:all 0.2s linear;}
 .HomeArea .next{ left:auto; right:10px; background-position:-40px 0;}
 /*.HomeArea:hover .prev{ left:10px;transition:all 0.2s linear; -webkit-transition:all 0.2s linear;}
 .HomeArea:hover .next{ right:10px;transition:all 0.2s linear; -webkit-transition:all 0.2s linear;}
@@ -166,7 +166,7 @@ textarea::-webkit-input-placeholder {
 .HomeBrand .scroll li{ float:left; width:163px; height:73px; border:1px solid #f1f1f2; background:#fff; margin-right:18px;}
 .HomeBrand .scroll li img{ display:block; width:163px; height:73px;}
 .HomeBrand .scroll .prev,
-.HomeBrand .scroll .next{ position:absolute;left:-30px; top: 0px;display:block; width:30px; height:73px; overflow:hidden; background:url("../images/arr2.png"/*tpa=http://www.etsc-tech.com/cn/images/arr2.png*/) 0px top; cursor:pointer;transition:all 0.2s linear; -webkit-transition:all 0.2s linear;}
+.HomeBrand .scroll .next{ position:absolute;left:-30px; top: 0px;display:block; width:30px; height:73px; overflow:hidden; background:url(../images/arr2.png) 0px top; cursor:pointer;transition:all 0.2s linear; -webkit-transition:all 0.2s linear;}
 .HomeBrand .scroll .next{ left:auto; right:-30px; background-position:-30px 0;}
 .HomeBrand .scroll:hover .prev{ left:0px;transition:all 0.2s linear; -webkit-transition:all 0.2s linear;}
 .HomeBrand .scroll:hover .next{ right:0px;transition:all 0.2s linear; -webkit-transition:all 0.2s linear;}
@@ -181,18 +181,18 @@ textarea::-webkit-input-placeholder {
 .CulumnName p{ display:none;}
 .MenuList{ padding-bottom:30px;}
 .MenuList li{ margin-top:0px;}
-.MenuList li span a{ line-height:22px; display:block; background:url("../images/menuarr.gif"/*tpa=http://www.etsc-tech.com/cn/images/menuarr.gif*/) 18px center no-repeat; padding:10px 0 10px 50px; color:#222222; font-size:16px;}
-.MenuList li span a:hover,.MenuList li.onli span a{background: #9665d5 url("../images/menuarr2.gif"/*tpa=http://www.etsc-tech.com/cn/images/menuarr2.gif*/) 18px center no-repeat;color:#fff;}
+.MenuList li span a{ line-height:22px; display:block; background:url(../images/menuarr.gif) 18px center no-repeat; padding:10px 0 10px 50px; color:#222222; font-size:16px;}
+.MenuList li span a:hover,.MenuList li.onli span a{background: #9665d5 url(../images/menuarr2.gif) 18px center no-repeat;color:#fff;}
 .MenuList .sub{ display:none; line-height:27pxx; padding:6px 0px 6px 0px; background:#f8f7f7;}
 .MenuList .sub dd{ padding:4px 0px;}
-.MenuList .sub a{ color:#000000; background:url("../images/arr3.gif"/*tpa=http://www.etsc-tech.com/cn/images/arr3.gif*/) 0px center no-repeat; display:inline; margin-left:35px; padding-left:20px;}
-.MenuList .sub a:hover,.MenuList .sub a.cur{ color:#9665d5; font-weight:bold; background:url("../images/arr03.gif"/*tpa=http://www.etsc-tech.com/cn/images/arr03.gif*/) 0px center no-repeat;}
+.MenuList .sub a{ color:#000000; background:url(../images/arr3.gif) 0px center no-repeat; display:inline; margin-left:35px; padding-left:20px;}
+.MenuList .sub a:hover,.MenuList .sub a.cur{ color:#9665d5; font-weight:bold; background:url(../images/arr03.gif) 0px center no-repeat;}
 .MenuList li.onli .sub{ display:block;}
 
 .Current{ height:61px; line-height:61px; border-bottom:1px solid #ededed;}
 .Current h3{ font-weight:normal; font-size:20px; float:left;}
 .Current h3 img{ width:130px; height:60px; display:block;}
-.Current .place{ float:right;background:url("../images/home.gif"/*tpa=http://www.etsc-tech.com/cn/images/home.gif*/) 0px center no-repeat; padding-left:35px; color:#666666;}
+.Current .place{ float:right;background:url(../images/home.gif) 0px center no-repeat; padding-left:35px; color:#666666;}
 .Current .place a{color:#666666;}.Current .place a:hover{color:#9665d5;}
 .Current .place span{ color:#9665d5; font-weight:bold;}
 
@@ -209,10 +209,10 @@ textarea::-webkit-input-placeholder {
 .NewsList li .p{ line-height:25px; padding:10px 0px; color:#767676;}
 .NewsList li .other{ font-size:12px; color:#999999;}
 .NewsList li .other i{ text-align:center; display:inline-block; width:21px; color:#e6e6e6;}
-.NewsList li .other .date{ background:url("../images/date.gif"/*tpa=http://www.etsc-tech.com/cn/images/date.gif*/) 0px center no-repeat; padding-left:20px; vertical-align:middle;}
-.NewsList li .other .click{ background:url("../images/click.gif"/*tpa=http://www.etsc-tech.com/cn/images/click.gif*/) 0px center no-repeat; padding-left:25px; vertical-align:middle;}
+.NewsList li .other .date{ background:url(../images/date.gif) 0px center no-repeat; padding-left:20px; vertical-align:middle;}
+.NewsList li .other .click{ background:url(../images/click.gif) 0px center no-repeat; padding-left:25px; vertical-align:middle;}
 
-.Titleinfo{ padding:25px 0px 20px 0px; text-align:center; background:url("../images/linebg.gif"/*tpa=http://www.etsc-tech.com/cn/images/linebg.gif*/) 0px bottom repeat-x; margin:0px 30px 0px; line-height:22px; color:#666666;}
+.Titleinfo{ padding:25px 0px 20px 0px; text-align:center; background:url(../images/linebg.gif) 0px bottom repeat-x; margin:0px 30px 0px; line-height:22px; color:#666666;}
 .Titleinfo .tit{ font-size:20px; color:#333333; padding-bottom:12px; line-height:30px;}
 .Titleinfo .date i{ margin-right:20px;}
 .Shares{ display:inline-block; *display:inline;zoom:1; vertical-align:middle;}
@@ -258,11 +258,11 @@ textarea::-webkit-input-placeholder {
 .titsub{ width:130px; line-height:40px; text-align:center; color:#fff; background:#9665d5; font-size:16px;}
 
 .titsubs{ background:#f1f1f1; height:38px; position:relative;}
-.titsubs span{ display:block; width: 80px;text-align: center;position:absolute; left:0px; top:-5px; height:43px; line-height:43px; padding:0px 24px 0px 20px; color:#fff; font-size:16px;background:url("../images/titbg.gif"/*tpa=http://www.etsc-tech.com/cn/images/titbg.gif*/) right top no-repeat;}
+.titsubs span{ display:block; width: 80px;text-align: center;position:absolute; left:0px; top:-5px; height:43px; line-height:43px; padding:0px 24px 0px 20px; color:#fff; font-size:16px;background:url(../images/titbg.gif) right top no-repeat;}
 
 
 .BrandList{ margin:10px 0px 30px;}
-.BrandList li{ position:relative; height:auto !important; height:73px; min-height:73px; padding:20px 0px 20px 186px; line-height:25px; background:url("../images/linebg.gif"/*tpa=http://www.etsc-tech.com/cn/images/linebg.gif*/) 0px bottom repeat-x;}
+.BrandList li{ position:relative; height:auto !important; height:73px; min-height:73px; padding:20px 0px 20px 186px; line-height:25px; background:url(../images/linebg.gif) 0px bottom repeat-x;}
 .BrandList li .img{ position:absolute; left:0px; top:20px; border:1px solid #f1f1f2;}
 .BrandList li .img img{ display:block; width:158px; height:73px;}
 .BrandList li .web{color:#888;}

@@ -194,10 +194,10 @@
         </div>
     </div>
 </header>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     //导航选中
     $("#nav" + navID).addClass("onnav");
-</script>
+</script> -->
 
 <!--/banner s-->
 <aside class="HomeBan">
@@ -262,7 +262,7 @@
                         {% for productMainCate_1 in productMainCate_list_1  %}
                             <dl>
                                 <dd class="item">
-                                    <a href="/productMainCate_1/{{productMainCate_1.id}}" >
+                                    <a href="/productMainCate/{{productMainCate_1.id}}" >
                                         <div class="infotxt">
                                             <dl class="box">
                                                 <dt>{{productMainCate_1.name}}</dt>
@@ -281,7 +281,7 @@
                             {% for productMainCate_2 in productMainCate_list_2  %}
                             <dl>
                                 <dd class="item">
-                                    <a href="/productMainCate_2/{{productMainCate_2.id}}" >
+                                    <a href="/productMainCate/{{productMainCate_2.id}}" >
                                         <div class="infotxt">
                                             <dl class="box">
                                                 <dt>{{productMainCate_2.name}}</dt>
